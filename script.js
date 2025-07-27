@@ -110,20 +110,48 @@ if (elapsedMinutes < 630) {
     classPeriod = 1;
 }
 
+// const getNextClass = () => {
+//     while (scheduleData[dayOfWeek][classPeriod] === null) {
+//         classPeriod++;
+//         if (classPeriod === 7) {
+//             classPeriod = 1;
+//             dayOfWeek++;
+//             if (dayOfWeek === 7) {
+//                 dayOfWeek = 0;
+//             }
+//         }
+//     }
+//     console.log("success");
+// };
+
 const getNextClass = () => {
-    while (scheduleData[dayOfWeek][classPeriod] === null) {
-        classPeriod++;
-        if (classPeriod === 7) {
+    for (let i = 0; i < 42; i++) {
+        if (classPeriod > 6) {
             classPeriod = 1;
             dayOfWeek++;
-            if (dayOfWeek === 7) {
+            if (dayOfWeek > 6) {
                 dayOfWeek = 0;
             }
         }
+        if (scheduleData[dayOfWeek][classPeriod] !== null) {
+            return;
+        }
+        classPeriod++;
     }
 };
 
+const displayContent = () => {
+    className.textContent = scheduleData[dayOfWeek][classPeriod].classname;
+    classroom.textContent = scheduleData[dayOfWeek][classPeriod].classroom;
+    classTime.textContent = classTimes[classPeriod - 1];
+};
+
 getNextClass();
-className.textContent = scheduleData[dayOfWeek][classPeriod].classname;
-classroom.textContent = scheduleData[dayOfWeek][classPeriod].classroom;
-classTime.textContent = classTimes[classPeriod - 1];
+displayContent();
+
+const nextButton = () => {
+    classPeriod++;
+    console.log(classPeriod);
+    getNextClass();
+    displayContent();
+};
