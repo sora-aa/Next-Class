@@ -123,6 +123,7 @@ const getNextClass = () => {
     }
 };
 
+getNextClass();
 className.textContent = scheduleData[dayOfWeek][classPeriod].classname;
 classroom.textContent = scheduleData[dayOfWeek][classPeriod].classroom;
 classTime.textContent = classTimes[classPeriod - 1];
