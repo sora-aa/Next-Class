@@ -89,7 +89,8 @@ const className = document.querySelector("#class-name");
 const classTime = document.querySelector("#class-time");
 const classroom = document.querySelector("#classroom");
 
-datetime.textContent = `${month}/${date} (${day}) ${hour}:${minutes}`;
+// prettier-ignore
+datetime.textContent = `${month}/${date} (${day}) ${hour}:${String(minutes).padStart(2, "0")}`;
 
 const elapsedMinutes = hour * 60 + minutes;
 let classPeriod;
@@ -109,16 +110,18 @@ if (elapsedMinutes < 630) {
     classPeriod = 1;
 }
 
-while (scheduleData[dayOfWeek][classPeriod] === null) {
-    classPeriod++;
-    if (classPeriod === 7) {
-        classPeriod = 1;
-        dayOfWeek++;
-        if (dayOfWeek === 7) {
-            dayOfWeek = 0;
+const getNextClass = () => {
+    while (scheduleData[dayOfWeek][classPeriod] === null) {
+        classPeriod++;
+        if (classPeriod === 7) {
+            classPeriod = 1;
+            dayOfWeek++;
+            if (dayOfWeek === 7) {
+                dayOfWeek = 0;
+            }
         }
     }
-}
+};
 
 className.textContent = scheduleData[dayOfWeek][classPeriod].classname;
 classroom.textContent = scheduleData[dayOfWeek][classPeriod].classroom;
