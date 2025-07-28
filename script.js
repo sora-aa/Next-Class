@@ -2,7 +2,7 @@ const now = new Date();
 
 let dayOfWeek = now.getDay();
 const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
-let day = dayNames[dayOfWeek];
+const day = dayNames[dayOfWeek];
 const month = now.getMonth() + 1;
 const date = now.getDate();
 const hour = now.getHours();
