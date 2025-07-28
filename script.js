@@ -108,6 +108,7 @@ if (elapsedMinutes < 630) {
     classPeriod = 6;
 } else {
     classPeriod = 1;
+    dayOfWeek++;
 }
 
 // const getNextClass = () => {
@@ -129,9 +130,9 @@ const getNextClass = () => {
         if (classPeriod > 6) {
             classPeriod = 1;
             dayOfWeek++;
-            if (dayOfWeek > 6) {
-                dayOfWeek = 0;
-            }
+        }
+        if (dayOfWeek > 6) {
+            dayOfWeek = 0;
         }
         if (scheduleData[dayOfWeek][classPeriod] !== null) {
             return;
