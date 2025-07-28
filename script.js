@@ -12,13 +12,13 @@ const scheduleData = [
     { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null },
     {
         1: {
-            classname: "リスニング・スピーキング演習Ⅰ",
+            className: "リスニング・スピーキング演習Ⅰ",
             classroom: "3110",
         },
         2: null,
         3: null,
         4: {
-            classname: "コンピュータ・サイエンス概論Ⅰ",
+            className: "コンピュータ・サイエンス概論Ⅰ",
             classroom: "2317",
         },
         5: null,
@@ -28,33 +28,33 @@ const scheduleData = [
     {
         1: null,
         2: {
-            classname: "情報連携概論Ⅰ",
+            className: "情報連携概論Ⅰ",
             classroom: "INIADホール",
         },
         3: {
-            classname: "情報連携基礎実習Ⅰ",
+            className: "情報連携基礎実習Ⅰ",
             classroom: "3105",
         },
         4: null,
         5: null,
         6: {
-            classname: "ミクロ経済学",
+            className: "ミクロ経済学",
             classroom: "オンデマンド",
         },
     },
     {
         1: {
-            classname: "リーディング・ライティング演習Ⅰ",
+            className: "リーディング・ライティング演習Ⅰ",
             classroom: "4205",
         },
         2: {
-            classname: "リスニング・スピーキング演習Ⅰ",
+            className: "リスニング・スピーキング演習Ⅰ",
             classroom: "3110",
         },
         3: null,
         4: null,
         5: {
-            classname: "コンピュータ・サイエンス概論Ⅰ",
+            className: "コンピュータ・サイエンス概論Ⅰ",
             classroom: "2317",
         },
         6: null,
@@ -64,11 +64,11 @@ const scheduleData = [
         2: null,
         3: null,
         4: {
-            classname: "情報連携のための確率・統計学Ⅰ",
+            className: "情報連携のための確率・統計学Ⅰ",
             classroom: "3114",
         },
         5: {
-            classname: "コンピュータ・サイエンス基礎演習Ⅰ",
+            className: "コンピュータ・サイエンス基礎演習Ⅰ",
             classroom: "3106",
         },
         6: null,
@@ -85,9 +85,9 @@ const classTimes = [
 ];
 
 const datetime = document.querySelector("#datetime");
-const className = document.querySelector("#class-name");
-const classTime = document.querySelector("#class-time");
-const classroom = document.querySelector("#classroom");
+const classNameElement = document.querySelector("#class-name");
+const classTimeElement = document.querySelector("#class-time");
+const classroomElement = document.querySelector("#classroom");
 
 // prettier-ignore
 datetime.textContent = `${month}/${date} (${day}) ${hour}:${String(minutes).padStart(2, "0")}`;
@@ -142,15 +142,16 @@ const getNextClass = () => {
 };
 
 const displayContent = () => {
-    className.textContent = scheduleData[dayOfWeek][classPeriod].classname;
-    classroom.textContent = scheduleData[dayOfWeek][classPeriod].classroom;
-    classTime.textContent = classTimes[classPeriod - 1];
+    const nextClass = scheduleData[dayOfWeek][classPeriod];
+    classNameElement.textContent = nextClass.className;
+    classroomElement.textContent = nextClass.classroom;
+    classTimeElement.textContent = classTimes[classPeriod - 1];
 };
 
 getNextClass();
 displayContent();
 
-const nextButton = () => {
+const showNextClass = () => {
     classPeriod++;
     console.log(classPeriod);
     getNextClass();
