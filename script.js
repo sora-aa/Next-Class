@@ -141,6 +141,22 @@ const getNextClass = () => {
     }
 };
 
+const getPreviousClass = () => {
+    for (let i = 0; i < 42; i++) {
+        if (classPeriod < 1) {
+            classPeriod = 6;
+            dayOfWeek--;
+        }
+        if (dayOfWeek < 0) {
+            dayOfWeek = 6;
+        }
+        if (scheduleData[dayOfWeek][classPeriod] !== null) {
+            return;
+        }
+        classPeriod--;
+    }
+};
+
 const displayContent = () => {
     const nextClass = scheduleData[dayOfWeek][classPeriod];
     classNameElement.textContent = nextClass.className;
@@ -155,5 +171,11 @@ const showNextClass = () => {
     classPeriod++;
     console.log(classPeriod);
     getNextClass();
+    displayContent();
+};
+
+const showPreviousClass = () => {
+    classPeriod--;
+    getPreviousClass();
     displayContent();
 };
