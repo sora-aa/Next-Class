@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  line-height: 1;
+  vertical-align: middle;
+}
