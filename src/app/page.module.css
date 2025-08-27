@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80vh;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
