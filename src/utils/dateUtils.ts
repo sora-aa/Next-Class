@@ -15,5 +15,7 @@ const month = now.getMonth() + 1;
 const date = now.getDate();
 export const day = dayNames[now.getDay()];
 export const hour = now.getHours();
-export const minutes = String(now.getMinutes()).padStart(2, "0");
-export const formatted = `${month}/${date}(${day}) ${hour}:${minutes}`;
+export const minutes = now.getMinutes();
+export const formatted = `${month}/${date}(${day}) ${hour}:${String(
+  minutes
+).padStart(2, "0")}`;
