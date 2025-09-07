@@ -4,6 +4,7 @@ const classTimes = [
   "13:00 ~ 14:30",
   "14:45 ~ 16:15",
   "16:30 ~ 18:00",
+  "18:15 ~ 19:45",
 ];
 
 export default classTimes;
