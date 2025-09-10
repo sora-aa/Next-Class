@@ -1,4 +1,6 @@
-const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
+import { Day } from "../../types/classScheduleType";
+
+export const dayNames: Day[] = ["日", "月", "火", "水", "木", "金", "土"];
 
 // export const formatCurrentDate = (): string => {
 //   const now = new Date();
@@ -13,9 +15,11 @@ const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
 const now = new Date();
 const month = now.getMonth() + 1;
 const date = now.getDate();
-export const day = dayNames[now.getDay()];
+export const dayNumber = now.getDay();
+export const day = dayNames[dayNumber];
 export const hour = now.getHours();
 export const minutes = now.getMinutes();
+export const elapsedMinutes = hour * 60 + minutes;
 export const formatted = `${month}/${date}(${day}) ${hour}:${String(
   minutes
 ).padStart(2, "0")}`;
